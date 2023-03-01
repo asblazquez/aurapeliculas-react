@@ -15,16 +15,16 @@ export function FilmsPage () {
 
     getFilms()
   }, [page])
-  console.log(error)
   return (
-      <div>
+      <div className='gridMovies'>
             {
                 error !== ''
                   ? <ErrorPage text={error}/>
                   : Array.isArray(movies) && movies.map((item, idex) => {
                     return (
-                      <div key={idex}>
-                          <h1>{item.title}</h1>
+                      <div key={idex} className='cardMovie'>
+                        <img src={API.api_image_url + item.poster_path} alt='poster' className='movieImg'/>
+                          <p className='text-white'>{item.title}</p>
                       </div>
                     )
                   })

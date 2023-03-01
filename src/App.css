@@ -1,0 +1,35 @@
+:root {
+    --main-bg-color: #333333;
+    --color-first: #482B55;
+    --color-second: #5C2277;
+    --color-third: #711A99;
+    --color-fourth: #8511BB;
+    --color-fifth: #9A09DD;
+    --color-sixth: #9A09DD;
+}
+
+body{
+    background-color: #333333;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.text-white {
+    color: white;
+}
+
+.gridMovies{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-column-gap: 1rem;
+}
+
+.cardMovie{
+    width: 100%;
+    align-self: baseline;
+    text-align: center;
+}
+
+.movieImg{
+    aspect-ratio: auto;
+    width: 100%;
+}

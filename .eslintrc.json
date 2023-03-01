@@ -19,6 +19,7 @@
         "react/react-in-jsx-scope": "off",
         "react/jsx-no-target-blank": "off",
         "eol-last": "off",
-        "indent": "off"
+        "no-debugger": "off",
+        "react/prop-types": "off"
     }
 }

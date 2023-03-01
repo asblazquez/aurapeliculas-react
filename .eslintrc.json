@@ -17,6 +17,7 @@
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "react/jsx-no-target-blank": "off"
+        "react/jsx-no-target-blank": "off",
+        "eol-last": "off"
     }
 }

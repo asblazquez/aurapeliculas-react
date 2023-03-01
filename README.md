@@ -13,4 +13,5 @@ ___________________________________________________
 - Añadir input con búsqueda               []      |
 - Buscar diseño general de la App         []      |
 - Añadir estilos básicos                  []      |
+- Crear estructura de carpetas            []      |
 __________________________________________________|

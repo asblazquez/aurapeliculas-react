@@ -16,7 +16,7 @@ export function FilmsPage () {
     getFilms()
   }, [page])
   return (
-      <div className='gridMovies'>
+      <div className='grid-10'>
             {
                 error !== ''
                   ? <ErrorPage text={error}/>

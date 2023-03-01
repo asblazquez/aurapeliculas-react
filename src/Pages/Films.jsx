@@ -16,21 +16,23 @@ export function FilmsPage () {
     getFilms()
   }, [page])
   return (
-      <div className='grid-10'>
-            {
-                error !== ''
-                  ? <ErrorPage text={error}/>
-                  : Array.isArray(movies) && movies.map((item, idex) => {
-                    return (
-                      <div key={idex} className='cardMovie'>
-                        <img src={API.api_image_url + item.poster_path} alt='poster' className='movieImg'/>
-                          <p className='text-white'>{item.title}</p>
-                      </div>
-                    )
-                  })
-            }
-
-        </div>
+    <div>
+        <div className='grid-10'>
+                {
+                    error !== ''
+                      ? <ErrorPage text={error}/>
+                      : Array.isArray(movies) && movies.map((item, idex) => {
+                        return (
+                            <div key={idex} className='cardMovie'>
+                            <img src={API.api_image_url + item.poster_path} alt='poster' className='movieImg'/>
+                                <p className='text-white'>{item.title}</p>
+                            </div>
+                        )
+                      })
+                }
+            </div>
+            <button type='button' onClick={() => setPage(page + 1)}>Pagina {page}</button>
+    </div>
 
   )
 }

@@ -1,14 +1,14 @@
 import './App.css'
 import { createBrowserRouter, Link, RouterProvider } from 'react-router-dom'
 
-function App() {
+function App () {
   const router = createBrowserRouter([
     {
       path: '/',
       element: (
         <div>
           <h1>Esta es la home😄</h1>
-          <p>Esta par cabesa 😝</p>
+          <p>Esta par cabesa 🖕😝🖕</p>
           <Link to="/about">About Us🐶</Link>
         </div>
       )

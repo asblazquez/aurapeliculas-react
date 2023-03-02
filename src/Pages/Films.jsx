@@ -33,7 +33,7 @@ export function FilmsPage () {
                       : movies.map((item, idex) => {
                         return (
                             <div key={idex} className='card'>
-                              <img src={API.api_image_url + item.poster_path} alt='poster' className='movieImg'/>
+                              <img src={API.api_image_url + item.poster_path} alt='poster' className='cardImg'/>
                             </div>
                         )
                       })

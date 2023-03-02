@@ -23,13 +23,49 @@ body{
     grid-column-gap: 1rem;
 }
 
+.grid-3{
+    display: grid;
+    grid-template-columns: repeat(3, 0fr);
+    grid-column-gap: 1rem;
+}
+
+.mt-3{
+    margin-top: 2rem;
+}
+
 .cardMovie{
     width: 100%;
-    align-self: baseline;
     text-align: center;
 }
 
 .movieImg{
-    aspect-ratio: auto;
     width: 100%;
+}
+
+.pager{
+    justify-content: center;
+}
+
+.inputPager{
+    width: 3rem;
+    height: 2rem;
+    text-align: center;  
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.card{
+    height: 12rem;
+    flex: 0 0 8rem;
+    text-align: center;
 }

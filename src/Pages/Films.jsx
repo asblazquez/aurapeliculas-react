@@ -7,31 +7,43 @@ export function FilmsPage () {
   const [movies, setMovies] = useState([])
   const [page, setPage] = useState(1)
   const [error, setError] = useState('')
+  const [totalPages, setTotalPages] = useState(0)
+
+  const nextPage = () => {
+    page === totalPages ? alert('No hay mas paginas') : setPage(page + 1)
+  }
+
+  const previousPage = () => {
+    page === 1 ? alert('Ya estas en la primera pagina') : setPage(page - 1)
+  }
 
   useEffect(() => {
     const getFilms = async () => {
-      await apiRequest(API.api_url + '/movie/popular?api_key=' + API.api_key + '&language=es-ES&page=' + page, setMovies, setError)
+      await apiRequest(API.api_url + '/movie/popular?api_key=' + API.api_key + '&language=es-ES&page=' + page, setMovies, setError, setTotalPages)
     }
 
     getFilms()
   }, [page])
   return (
     <div>
-        <div className='grid-10'>
+        <div className='cards'>
                 {
                     error !== ''
                       ? <ErrorPage text={error}/>
-                      : Array.isArray(movies) && movies.map((item, idex) => {
+                      : movies.map((item, idex) => {
                         return (
-                            <div key={idex} className='cardMovie'>
-                            <img src={API.api_image_url + item.poster_path} alt='poster' className='movieImg'/>
-                                <p className='text-white'>{item.title}</p>
+                            <div key={idex} className='card'>
+                              <img src={API.api_image_url + item.poster_path} alt='poster' className='movieImg'/>
                             </div>
                         )
                       })
                 }
             </div>
-            <button type='button' onClick={() => setPage(page + 1)}>Pagina {page}</button>
+            <div className='grid-3 pager mt-3'>
+                <button type='button' onClick={previousPage}>Anterior</button>
+                <input className='inputPager' type='number' onChange={null} placeholder={page}/>
+                <button type='button' onClick={nextPage}>Siguiente</button>
+            </div>
     </div>
 
   )

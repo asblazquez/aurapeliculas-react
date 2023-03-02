@@ -49,7 +49,25 @@ body{
 .inputPager{
     width: 3rem;
     height: 2rem;
-    text-align: center;  
+    text-align: center;
+    padding-top: 0.25rem;
+    border-radius: 10px;
+    font-size: medium;
+}
+
+.iconPager{
+    margin-top: 5px;
+}
+
+.btnPager{
+    border-radius: 10px;
+    background-color: var(--color-third);
+    color: white;
+    width: 2.5rem;
+}
+
+.btnPager:hover {
+    background-color: var(--color-fifth);
 }
 
 input[type=number]::-webkit-inner-spin-button, 

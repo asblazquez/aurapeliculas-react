@@ -60,13 +60,12 @@ export function FilmsPage () {
                         return (
                             <div key={idex} className='card'>
                               <LazyLoadImage
-                                alt='poster'
+                                alt={'poster'}
                                 src={API.api_image_url + item.poster_path}
-                                className='movieImg'
                                 placeholderSrc={'https://anatomised.com/wp-content/uploads/2016/05/spinner-test4.gif'}
-                                visibleByDefault={false}
                                 height={'100%'}
                                 width={'100%'}
+                                loading={'lazy'}
                                 />
                             </div>
                         )

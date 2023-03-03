@@ -9,9 +9,3 @@ export function HomePage () {
     </div>
   )
 }
-
-export function PatataPage () {
-  return (
-        <h1>🥔</h1>
-  )
-}

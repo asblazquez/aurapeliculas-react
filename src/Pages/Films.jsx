@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { API } from '../Constants'
 import { apiRequest } from '../Utils'
 import { ErrorPage } from './Error'
-import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { PagerComponent } from '../assets/Pager'
 
 export function FilmsPage () {
   const [movies, setMovies] = useState([])
@@ -11,37 +11,6 @@ export function FilmsPage () {
   const [error, setError] = useState('')
   const [totalPages, setTotalPages] = useState(500)
   const [value, setValue] = useState(1)
-
-  const nextPage = () => {
-    if (page === totalPages) {
-      alert('No hay mas paginas')
-    } else {
-      setPage(page + 1)
-      setValue(page + 1)
-    }
-  }
-
-  const previousPage = () => {
-    if (page === 1) {
-      alert('Ya estas en la primera pagina')
-    } else {
-      setPage(page - 1)
-      setValue(page - 1)
-    }
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (value <= 0 || value >= totalPages) {
-      alert('No existe esa pagina')
-    } else {
-      setPage(parseInt(value))
-    }
-  }
-
-  const handleChange = ({ target }) => {
-    setValue(target.value)
-  }
 
   useEffect(() => {
     const getFilms = async () => {
@@ -66,23 +35,14 @@ export function FilmsPage () {
                                 height={'100%'}
                                 width={'100%'}
                                 loading={'lazy'}
+                                className={'cardImg'}
                                 />
                             </div>
                         )
                       })
                 }
             </div>
-            <div className='grid-3 pager mt-3'>
-                <button className='btnPager' type='button' onClick={previousPage} title='Pagina anterior'>
-                  <AiOutlineArrowLeft className='iconPager'/>
-                </button>
-                <form onSubmit={handleSubmit}>
-                  <input className='inputPager' type='number' onChange={handleChange} value={value} placeholder={page}/>
-                </form>
-                <button className='btnPager' type='button' onClick={nextPage} title='Siguiente pagina'>
-                  <AiOutlineArrowRight className='iconPager'/>
-                </button>
-            </div>
+            <PagerComponent value={value} page={page} setValue={setValue} setPage={setPage} totalPages={totalPages} />
     </div>
   )
 }

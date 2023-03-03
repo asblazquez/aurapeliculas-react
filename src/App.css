@@ -39,7 +39,7 @@ body{
 }
 
 .cardImg{
-    width: 100%;
+    border-radius: 5px;
 }
 
 .pager{
@@ -51,8 +51,9 @@ body{
     height: 2rem;
     text-align: center;
     padding-top: 0.25rem;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: medium;
+    border: 1px solid black;
 }
 
 .iconPager{
@@ -60,10 +61,11 @@ body{
 }
 
 .btnPager{
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: var(--color-third);
     color: white;
     width: 2.5rem;
+    border: 1px solid var(--color-first);
 }
 
 .btnPager:hover {

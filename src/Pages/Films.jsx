@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { API } from '../Constants'
 import { apiRequest } from '../Utils'
 import { ErrorPage } from './Error'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { PagerComponent } from '../assets/Pager'
+import { CardComponent } from '../assets/Card'
 
 export function FilmsPage () {
   const [movies, setMovies] = useState([])
@@ -25,19 +25,9 @@ export function FilmsPage () {
                 {
                     error !== ''
                       ? <ErrorPage text={error}/>
-                      : movies.map((item, idex) => {
+                      : movies.map((item, index) => {
                         return (
-                            <div key={idex} className='card'>
-                              <LazyLoadImage
-                                alt={'poster'}
-                                src={API.api_image_url + item.poster_path}
-                                placeholderSrc={'https://anatomised.com/wp-content/uploads/2016/05/spinner-test4.gif'}
-                                height={'100%'}
-                                width={'100%'}
-                                loading={'lazy'}
-                                className={'cardImg'}
-                                />
-                            </div>
+                            <CardComponent item={item} key={index}/>
                         )
                       })
                 }

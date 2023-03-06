@@ -8,9 +8,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export function Series () {
-  const [page, setPage] = useState(2)
+  const [page, setPage] = useState(1)
   const [serie, setSerie] = useState([])
-  const POPULAR_MOVIES_ENDPOINT = `https://api.themoviedb.org/3/tv/popular?api_key=${API.api_key}&language=es-ES&page=${page}`
 
   // Efecto para recuperar los datos de la API
   useEffect(() => {
@@ -21,7 +20,20 @@ export function Series () {
     getSeries()
   }, [page])
 
+  const nextPage = () => {
+    setPage(page + 1)
+  }
+
+  const previousPage = () => {
+    setPage(page - 1)
+  }
+
   return (
+    <div>
+        <div className='search'>
+            <input className='inputSearch' placeholder='  House, Vikings, Last Kingdom...'/>
+            <button className='buttonSearch'> Buscar </button>
+        </div>
         <div className='cards'>
             {
                 serie.map((item, index) => {
@@ -33,5 +45,11 @@ export function Series () {
                 })
             }
         </div>
+        <div className='grid-3 pager mt-3'>
+            <button className='buttonSearch' onClick={previousPage}> Anterior </button>
+            <input className='inputPager' placeholder={page}/>
+            <button className='buttonSearch' onClick={nextPage}> Siguiente </button>
+        </div>
+    </div>
   )
 }

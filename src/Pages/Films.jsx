@@ -27,7 +27,7 @@ export function FilmsPage () {
                       ? <ErrorPage text={error}/>
                       : movies.map((item, index) => {
                         return (
-                            <CardComponent item={item} key={index}/>
+                            <CardComponent item={item} title={item.title} key={index}/>
                         )
                       })
                 }

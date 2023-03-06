@@ -3,7 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { API } from '../Constants'
 
 export function CardComponent (props) {
-  const { item } = props
+  const { item, title } = props
   return (
         <div className='card'>
             <LazyLoadImage
@@ -16,7 +16,7 @@ export function CardComponent (props) {
                 className={'cardImg'}
             />
             <div className='cardInfo'>
-                texto de prueba
+                {title}
             </div>
         </div>
   )

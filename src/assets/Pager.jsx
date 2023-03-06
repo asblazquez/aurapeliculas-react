@@ -2,6 +2,8 @@ import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
 import { toast } from 'react-toastify'
 
 export function PagerComponent (props) {
+  const { value, page, setValue, setPage, totalPages } = props
+
   const nextPage = () => {
     if (page === totalPages + 1) {
       toast.error(`No hay mas de ${totalPages} páginas`)
@@ -38,8 +40,6 @@ export function PagerComponent (props) {
   const handleChange = ({ target }) => {
     setValue(target.value)
   }
-
-  const { value, page, setValue, setPage, totalPages } = props
 
   return (
     <div>

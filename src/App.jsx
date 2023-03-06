@@ -1,18 +1,21 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { HomePage, PatataPage } from './Pages/Home'
+import { HomePage } from './Pages/Home'
 import { FilmsPage } from './Pages/Films'
 import { Series } from './Pages/Series'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { ALERT_STYLES } from './Constants'
 
 function App () {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<HomePage/>} />
-      <Route path='/Patata' element={<PatataPage/>} />
-      <Route path='/movies' element={<FilmsPage />} />
-      <Route path='/series' element={<Series />} />
-    </Routes>
+    <ToastContainer {...ALERT_STYLES}/>
+      <Routes>
+        <Route path='/' element={<HomePage/>} />
+        <Route path='/movies' element={<FilmsPage />} />
+        <Route path='/series' element={<Series />} />
+      </Routes>
     </BrowserRouter>
   )
 }

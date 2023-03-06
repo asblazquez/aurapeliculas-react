@@ -1,11 +1,22 @@
 :root {
     --main-bg-color: #333333;
+    --main-bg-color-opacity-7: rgba(51, 51, 51, .7);
     --color-first: #482B55;
     --color-second: #5C2277;
     --color-third: #711A99;
     --color-fourth: #8511BB;
     --color-fifth: #9A09DD;
     --color-sixth: #9A09DD;
+}
+
+/***************************************************************************************************/
+/*************************************** Estilos Generales *****************************************/
+/***************************************************************************************************/
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 
 body{
@@ -33,30 +44,10 @@ body{
     margin-top: 2rem;
 }
 
-.cardMovie{
-    width: 100%;
-    text-align: center;
-}
+/***************************************************************************************************/
+/********************************* Estilos del componente Card *************************************/
+/***************************************************************************************************/
 
-.cardImg{
-    width: 100%;
-}
-
-.pager{
-    justify-content: center;
-}
-
-.inputPager{
-    width: 3rem;
-    height: 2rem;
-    text-align: center;  
-}
-
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-}
 .cards{
     display: flex;
     flex-wrap: wrap;
@@ -68,6 +59,71 @@ input[type=number]::-webkit-outer-spin-button {
     height: 12rem;
     flex: 0 0 8rem;
     text-align: center;
+}
+
+.cardInfo{
+    background: var(--main-bg-color-opacity-7);
+    margin-top: -5rem;
+    position: relative;
+    color: white;
+    height: 4rem;
+    padding-top: 1rem;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0px -30px 18px 10px var(--main-bg-color-opacity-7);
+    visibility: hidden;
+}
+
+.card:hover
+.cardInfo{
+    visibility: visible;
+}
+
+.cardMovie{
+    width: 100%;
+    text-align: center;
+}
+
+.cardImg{
+    border-radius: 5px;
+}
+
+/***************************************************************************************************/
+/********************************* Estilos del componente Pager ************************************/
+/***************************************************************************************************/
+.pager{
+    justify-content: center;
+}
+
+.inputPager{
+    width: 3rem;
+    height: 2rem;
+    text-align: center;
+    padding-top: 0.25rem;
+    border-radius: 5px;
+    font-size: medium;
+    border: 1px solid black;
+}
+
+.iconPager{
+    margin-top: 5px;
+}
+
+.btnPager{
+    border-radius: 5px;
+    background-color: var(--color-third);
+    color: white;
+    width: 2.5rem;
+    border: 1px solid var(--color-first);
+}
+
+.btnPager:hover {
+    background-color: var(--color-fifth);
+}
+
+.btnPager:disabled,
+.btnPager[disabled]{
+  background-color: var(--color-first);
 }
 
 /*      Estilos de Series       */

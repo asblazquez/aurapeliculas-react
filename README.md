@@ -1,7 +1,7 @@
 Tareas ✴️
 
 Alex 🍊 --> Peliculas 📽️
-Andrés --> Series
+Andrés 🌮 --> Series
 
 API:
 
@@ -12,7 +12,7 @@ API:
 ___________________________________________________
 - Añadir la página de Home                [ ❌, null ]      
 - Añadir la página de peliculas           [ ❌, 🍊 ]
-- Añadir la página de Series              [ ❌, Andres ]
+- Añadir la página de Series              [ ❌, 🌮 ]
 - Añadir input con búsqueda               [ ❌, null ]     
 - Buscar diseño general de la App         [ ❌, null ]
 - Añadir estilos básicos                  [ ❌, null ]

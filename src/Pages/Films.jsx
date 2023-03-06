@@ -9,12 +9,12 @@ export function FilmsPage () {
   const [movies, setMovies] = useState([])
   const [page, setPage] = useState(1)
   const [error, setError] = useState('')
-  const [totalPages, setTotalPages] = useState(500)
+  const [totalPages] = useState(500)
   const [value, setValue] = useState(1)
 
   useEffect(() => {
     const getFilms = async () => {
-      await apiRequest(API.api_url + '/movie/popular?api_key=' + API.api_key + '&language=es-ES&page=' + page, setMovies, setError, setTotalPages)
+      await apiRequest(API.api_url + '/movie/popular?api_key=' + API.api_key + '&language=es-ES&page=' + page, setMovies, setError)
     }
 
     getFilms()
@@ -27,7 +27,7 @@ export function FilmsPage () {
                       ? <ErrorPage text={error}/>
                       : movies.map((item, index) => {
                         return (
-                            <CardComponent item={item} title={item.title} rate={item.vote_average} key={index}/>
+                            <CardComponent item={item} overview={item.overview} rate={item.vote_average} key={index}/>
                         )
                       })
                 }

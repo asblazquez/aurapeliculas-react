@@ -14,13 +14,13 @@
 /*************************************** Estilos Generales *****************************************/
 /***************************************************************************************************/
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-body{
+body {
     background-color: #333333;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -29,23 +29,23 @@ body{
     color: white;
 }
 
-.grid-10{
+.grid-10 {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-column-gap: 1rem;
 }
 
-.grid-3{
+.grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 0fr);
     grid-column-gap: 1rem;
 }
 
-.mt-3{
+.mt-3 {
     margin-top: 2rem;
 }
 
-.alignIcon-bottom{
+.alignIcon-bottom {
     vertical-align: bottom;
 }
 
@@ -53,22 +53,22 @@ body{
 /********************************* Estilos del componente Card *************************************/
 /***************************************************************************************************/
 
-.cards{
+.cards {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
 }
 
-.card{
+.card {
     height: 12rem;
     flex: 0 0 8rem;
     text-align: center;
 }
 
-.cardInfo{
+.cardInfo {
     background: var(--main-bg-color-opacity-7);
-    margin-top: -7rem;
+    margin-top: -115px;
     position: relative;
     color: white;
     height: 6rem;
@@ -80,35 +80,36 @@ body{
     vertical-align: middle;
 }
 
-.card:hover
-.cardInfo{
+.card:hover .cardInfo {
     visibility: visible;
+    animation: showInfo 0.2s linear 0s 1 normal forwards;
 }
 
-.cardMovie{
+.cardMovie {
     width: 100%;
     text-align: center;
 }
 
-.cardImg{
+.cardImg {
     border-radius: 5px;
+    box-shadow: 10px 10px 0px 0px rgb(41, 41, 41);
 }
 
-.voteAverage{
+.voteAverage {
     text-align: right;
     margin-right: 1rem;
     color: var(--color-gold);
-    vertical-align: 'bottom';   
+    vertical-align: 'bottom';
 }
 
 /***************************************************************************************************/
 /********************************* Estilos del componente Pager ************************************/
 /***************************************************************************************************/
-.pager{
+.pager {
     justify-content: center;
 }
 
-.inputPager{
+.inputPager {
     width: 3rem;
     height: 2rem;
     text-align: center;
@@ -118,11 +119,11 @@ body{
     border: 1px solid black;
 }
 
-.iconPager{
+.iconPager {
     margin-top: 5px;
 }
 
-.btnPager{
+.btnPager {
     border-radius: 5px;
     background-color: var(--color-third);
     color: white;
@@ -135,8 +136,24 @@ body{
 }
 
 .btnPager:disabled,
-.btnPager[disabled]{
-  background-color: var(--color-first);
+.btnPager[disabled] {
+    background-color: var(--color-first);
+}
+
+/***************************************************************************************************/
+/************************************ Funciones de animacion ***************************************/
+/***************************************************************************************************/
+
+@keyframes showInfo {
+    0% {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /*      Estilos de Series       */
@@ -152,7 +169,7 @@ body{
     border: none;
 }
 
-.inputPager{
+.inputPager {
     width: 3rem;
     height: 30px;
     border-radius: 3rem;

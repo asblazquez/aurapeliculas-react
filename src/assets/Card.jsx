@@ -1,9 +1,9 @@
-
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { API } from '../Constants'
+import { AiFillStar } from 'react-icons/ai'
 
 export function CardComponent (props) {
-  const { item, title } = props
+  const { item, title, rate } = props
   return (
         <div className='card'>
             <LazyLoadImage
@@ -16,6 +16,9 @@ export function CardComponent (props) {
                 className={'cardImg'}
             />
             <div className='cardInfo'>
+                <div className={'voteAverage'}>
+                    <span><AiFillStar className={'alignIcon-bottom'} /> {rate}</span>
+                </div>
                 {title}
             </div>
         </div>

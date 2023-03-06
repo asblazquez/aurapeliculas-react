@@ -7,6 +7,7 @@
     --color-fourth: #8511BB;
     --color-fifth: #9A09DD;
     --color-sixth: #9A09DD;
+    --color-gold: #FFD700;
 }
 
 /***************************************************************************************************/
@@ -44,6 +45,10 @@ body{
     margin-top: 2rem;
 }
 
+.alignIcon-bottom{
+    vertical-align: bottom;
+}
+
 /***************************************************************************************************/
 /********************************* Estilos del componente Card *************************************/
 /***************************************************************************************************/
@@ -63,15 +68,16 @@ body{
 
 .cardInfo{
     background: var(--main-bg-color-opacity-7);
-    margin-top: -5rem;
+    margin-top: -7rem;
     position: relative;
     color: white;
-    height: 4rem;
+    height: 6rem;
     padding-top: 1rem;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: 0px -30px 18px 10px var(--main-bg-color-opacity-7);
     visibility: hidden;
+    vertical-align: middle;
 }
 
 .card:hover
@@ -86,6 +92,13 @@ body{
 
 .cardImg{
     border-radius: 5px;
+}
+
+.voteAverage{
+    text-align: right;
+    margin-right: 1rem;
+    color: var(--color-gold);
+    vertical-align: 'bottom';   
 }
 
 /***************************************************************************************************/

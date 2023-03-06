@@ -6,9 +6,13 @@
 import { API } from '../Constants'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { PagerComponent } from '../assets/Pager'
+import { CardComponent } from '../assets/Card'
 
 export function Series () {
+  const [value, setValue] = useState(1)
   const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(500)
   const [serie, setSerie] = useState([])
 
   // Efecto para recuperar los datos de la API
@@ -20,14 +24,6 @@ export function Series () {
     getSeries()
   }, [page])
 
-  const nextPage = () => {
-    setPage(page + 1)
-  }
-
-  const previousPage = () => {
-    setPage(page - 1)
-  }
-
   return (
     <div>
         <div className='search'>
@@ -38,18 +34,15 @@ export function Series () {
             {
                 serie.map((item, index) => {
                   return (
-                        <div key={index} className='card'>
-                            <img src={API.api_image_url + item.poster_path} alt={item.name} className='cardImg'/>
-                        </div>
+                        // <div key={index} >
+                        //     <img src={API.api_image_url + item.poster_path} alt={item.name} className='cardImg'/>
+                        // </div>
+                        <CardComponent item={item} title={item.title} key={index} />
                   )
                 })
             }
         </div>
-        <div className='grid-3 pager mt-3'>
-            <button className='buttonSearch' onClick={previousPage}> Anterior </button>
-            <input className='inputPager' placeholder={page}/>
-            <button className='buttonSearch' onClick={nextPage}> Siguiente </button>
-        </div>
+        <PagerComponent value={value} page={page} setValue={setValue} setPage={setPage} totalPages={totalPages}/>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 Tareas ✴️
 
-Alex 🍊 --> Peliculas 📽️
-Andrés 🌮 --> Series
+Alex 🍊 --> Series 📽️
+Andrés 🌮 --> Peliculas
 
 API:
 

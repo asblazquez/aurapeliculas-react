@@ -21,7 +21,7 @@ export function FilmsPage () {
   }, [page])
   return (
     <div>
-        <div className='cards'>
+        <div className='cards mt-3'>
                 {
                     error !== ''
                       ? <ErrorPage text={error}/>

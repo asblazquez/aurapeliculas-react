@@ -12,8 +12,9 @@ import { CardComponent } from '../assets/Card'
 export function Series () {
   const [value, setValue] = useState(1)
   const [page, setPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(500)
+  const [totalPages] = useState(500)
   const [serie, setSerie] = useState([])
+  const [search, setSearch] = useState('')
 
   // Efecto para recuperar los datos de la API
   useEffect(() => {
@@ -24,20 +25,38 @@ export function Series () {
     getSeries()
   }, [page])
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // Efecto para la busqueda en la API
+
+    useEffect(() => {
+      const searchAPI = async () => {
+        const res = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${API.api_key}&language=es-ES&page=1&query=${search}&include_adult=false`)
+        setSearch(res.data.results)
+        console.log(res.data.results)
+      }
+      searchAPI()
+    }, [])
+  }
+
+  const handleChange = ({ target }) => {
+    setSearch(target.value)
+    // console.log(target.value)
+  }
+
   return (
     <div>
-        <div className='search'>
-            <input className='inputSearch' placeholder='  House, Vikings, Last Kingdom...'/>
-            <button className='buttonSearch'> Buscar </button>
-        </div>
+        <form className='search'>
+            <input className='inputSearch'
+            onChange={handleChange}
+            placeholder='  House, Vikings, Brooklyn 99, Last Kingdom...' />
+            <button className='buttonSearch' onClick={handleSubmit}> Buscar </button>
+        </form>
         <div className='cards'>
             {
                 serie.map((item, index) => {
                   return (
-                        // <div key={index} >
-                        //     <img src={API.api_image_url + item.poster_path} alt={item.name} className='cardImg'/>
-                        // </div>
-                        <CardComponent item={item} title={item.title} key={index} />
+                        <CardComponent item={item} title={item.name} rate={item.vote_average} key={index} />
                   )
                 })
             }

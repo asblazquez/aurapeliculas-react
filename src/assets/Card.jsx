@@ -1,9 +1,21 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { API } from '../Constants'
 import { AiFillStar } from 'react-icons/ai'
+import { useState, useEffect } from 'react'
 
 export function CardComponent (props) {
-  const { item, title, rate } = props
+  const { item, overview, rate } = props
+
+  const [overViewFormatted, setOverViewFormatted] = useState('')
+
+  useEffect(() => {
+    const getoverviewFormatted = () => {
+      setOverViewFormatted(overview.slice(0, 45) + '...')
+    }
+
+    getoverviewFormatted()
+  }, [overview])
+
   return (
         <div className='card'>
             <LazyLoadImage
@@ -19,7 +31,7 @@ export function CardComponent (props) {
                 <div className={'voteAverage'}>
                     <span><AiFillStar className={'alignIcon-bottom'} /> {rate}</span>
                 </div>
-                {title}
+                {overViewFormatted}
             </div>
         </div>
   )

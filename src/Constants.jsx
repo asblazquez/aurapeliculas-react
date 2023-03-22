@@ -16,3 +16,7 @@ export const ALERT_STYLES = {
   theme: 'colored',
   limit: 3
 }
+
+export const PLACEHOLDER_PELICULAS = 'Transformers, Avatar, Mision Imposible...'
+
+export const PLACEHOLDER_SERIES = 'House, Vikingos, Brooklyn 99, The last of us...'

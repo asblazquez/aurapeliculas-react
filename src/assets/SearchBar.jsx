@@ -1,6 +1,6 @@
 
 export function SearchBar (props) {
-  const { value, setSearch, setValue } = props
+  const { value, setSearch, setValue, placeholder } = props
   const handleSubmit = (e) => {
     e.preventDefault()
     setSearch(value)
@@ -11,10 +11,10 @@ export function SearchBar (props) {
   }
 
   return (
-        <form className='search' onSubmit={handleSubmit}>
-            <input className='inputSearch'
+        <form className='search mt-3' onSubmit={handleSubmit}>
+            <input className='inputSearch pl-1'
             onChange={handleChange}
-            placeholder='  House, Vikings, Brooklyn 99, Last Kingdom...' />
-            <button className='buttonSearch' onClick={handleSubmit}> Buscar </button>
+            placeholder={placeholder} />
+            <button className='buttonSearch' onClick={handleSubmit} type={'button'}> Buscar </button>
         </form>)
 }

@@ -19,6 +19,7 @@ export function FilmsPage () {
 
     getFilms()
   }, [page])
+
   return (
     <div>
         <div className='cards mt-3'>

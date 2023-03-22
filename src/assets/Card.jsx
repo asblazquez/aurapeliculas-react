@@ -2,11 +2,16 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { API } from '../Constants'
 import { AiFillStar } from 'react-icons/ai'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export function CardComponent (props) {
   const { item, overview, rate } = props
-
+  const navigate = useNavigate()
   const [overViewFormatted, setOverViewFormatted] = useState('')
+
+  const navigateToFilm = () => {
+    navigate('/movie/' + item.id)
+  }
 
   useEffect(() => {
     const getoverviewFormatted = () => {
@@ -17,7 +22,7 @@ export function CardComponent (props) {
   }, [overview])
 
   return (
-        <div className='card'>
+        <div className='card cursor-pointer' onClick={navigateToFilm}>
             <LazyLoadImage
                 alt={'poster'}
                 src={API.api_image_url + item.poster_path}

@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { ALERT_STYLES } from './Constants'
 import { NavBarComponent } from './assets/NavBar'
+import { FilmInfoPage } from './Pages/FilmInfo'
 
 function App () {
   return (
@@ -17,6 +18,7 @@ function App () {
         <Route path='/' element={<HomePage/>} />
         <Route path='/movies' element={<FilmsPage />} />
         <Route path='/series' element={<Series />} />
+        <Route path='/movie/:id' element={<FilmInfoPage />} />
       </Routes>
     </BrowserRouter>
   )

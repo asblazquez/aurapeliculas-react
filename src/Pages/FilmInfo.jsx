@@ -24,23 +24,21 @@ export function FilmInfoPage () {
     }
     getFormattittle()
   }, [film])
-
+  console.log(film)
   return (
         <div>
             {
                 error !== ''
                   ? <ErrorPage text={error}/>
                   : <div>
-                    <div className={'cabeceraInfo'}>
-                      <div className={'imgCabeceraInfo'}>
-                      <img alt={'Poster de la pelicula' + film.title} src={API.api_image_url + film.poster_path}/>
+                      <div>
+                        <img className={'imgCabeceraInfo'} alt={'Poster de la pelicula' + film.title} src={API.api_image_url + film.backdrop_path}/>
                       </div>
-                      <div className={'datosCabeceraInfo'}>
+                      <div className={'textTitle'}>
+                        {film.title}
                       </div>
-                    </div>
                         <a href={'https://cuevana3.mu/pelicula/' + formatTitlte} target={'_blank'}>Ver Online</a>
-                  </div>
-
+                    </div>
             }
         </div>
   )

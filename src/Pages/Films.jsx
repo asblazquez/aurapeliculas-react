@@ -30,7 +30,7 @@ export function FilmsPage () {
     }
     if (search !== '') getSearch()
   }, [search])
-
+  console.log(movies)
   return (
     <div>
         <SearchBar value={valueSearch} setSearch={setSearch} setValue={setValueSearch} placeholder={PLACEHOLDER_PELICULAS}/>

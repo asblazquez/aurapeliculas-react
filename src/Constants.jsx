@@ -20,3 +20,7 @@ export const ALERT_STYLES = {
 export const PLACEHOLDER_PELICULAS = 'Transformers, Avatar, Mision Imposible...'
 
 export const PLACEHOLDER_SERIES = 'House, Vikingos, Brooklyn 99, The last of us...'
+
+export const LOCALSTORAGE_NAME_FILMS = 'pageFilms'
+
+export const LOCALSTORAGE_NAME_SERIES = 'pageSeries'

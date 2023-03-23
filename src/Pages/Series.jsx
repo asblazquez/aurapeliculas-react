@@ -3,7 +3,7 @@
 // Traer algún dato con un endpoint
 // Mostrar varios datos
 
-import { API } from '../Constants'
+import { API, LOCALSTORAGE_NAME_SERIES } from '../Constants'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { PagerComponent } from '../assets/Pager'
@@ -13,8 +13,8 @@ import { ErrorPage } from './Error'
 import { SearchBar } from '../assets/SearchBar'
 
 export function Series () {
-  const [value, setValue] = useState(1)
-  const [page, setPage] = useState(1)
+  const [value, setValue] = useState(localStorage.getItem(LOCALSTORAGE_NAME_SERIES) === null ? 1 : parseInt(localStorage.getItem(LOCALSTORAGE_NAME_SERIES)))
+  const [page, setPage] = useState(localStorage.getItem(LOCALSTORAGE_NAME_SERIES) === null ? 1 : parseInt(localStorage.getItem(LOCALSTORAGE_NAME_SERIES)))
   const [totalPages] = useState(500)
   const [error, setError] = useState('')
   const [serie, setSerie] = useState([])
@@ -46,18 +46,22 @@ export function Series () {
                 ? <ErrorPage text={error}/>
                 : search === ''
                   ? serie.map((item, index) => {
-                    return (
-                        <CardComponent item={item} overview={item.overview} rate={item.vote_average} key={index} />
-                    )
+                    if (item.poster_path !== null) {
+                      return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} key={index} />)
+                    } else {
+                      return (null)
+                    }
                   })
                   : searchedSerie.map((item, index) => {
-                    return (
-                        <CardComponent item={item} overview={item.overview} rate={item.vote_average} key={index} />
-                    )
+                    if (item.poster_path !== null) {
+                      return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} key={index} />)
+                    } else {
+                      return (null)
+                    }
                   })
             }
         </div>
-        <PagerComponent value={value} page={page} setValue={setValue} setPage={setPage} totalPages={totalPages}/>
+        <PagerComponent value={value} page={page} setValue={setValue} setPage={setPage} totalPages={totalPages} localStorageName={LOCALSTORAGE_NAME_SERIES}/>
     </div>
   )
 }

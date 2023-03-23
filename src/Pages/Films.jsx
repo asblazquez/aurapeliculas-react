@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { API, PLACEHOLDER_PELICULAS } from '../Constants'
+import { API, LOCALSTORAGE_NAME_FILMS, PLACEHOLDER_PELICULAS } from '../Constants'
 import { apiRequest } from '../Utils'
 import { ErrorPage } from './Error'
 import { PagerComponent } from '../assets/Pager'
@@ -8,10 +8,10 @@ import { SearchBar } from '../assets/SearchBar'
 
 export function FilmsPage () {
   const [movies, setMovies] = useState([])
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(localStorage.getItem(LOCALSTORAGE_NAME_FILMS) === null ? 1 : parseInt(localStorage.getItem(LOCALSTORAGE_NAME_FILMS)))
   const [error, setError] = useState('')
   const [totalPages] = useState(500)
-  const [valuePager, setValuePager] = useState(1)
+  const [valuePager, setValuePager] = useState(localStorage.getItem(LOCALSTORAGE_NAME_FILMS) === null ? 1 : parseInt(localStorage.getItem(LOCALSTORAGE_NAME_FILMS)))
   const [valueSearch, setValueSearch] = useState('')
   const [searchedMovie, setSearchedMovie] = useState([])
   const [search, setSearch] = useState('')
@@ -30,7 +30,6 @@ export function FilmsPage () {
     }
     if (search !== '') getSearch()
   }, [search])
-  console.log(movies)
   return (
     <div>
         <SearchBar value={valueSearch} setSearch={setSearch} setValue={setValueSearch} placeholder={PLACEHOLDER_PELICULAS}/>
@@ -51,7 +50,8 @@ export function FilmsPage () {
                         })
                 }
             </div>
-            <PagerComponent value={valuePager} page={page} setValue={setValuePager} setPage={setPage} totalPages={totalPages} />
+            {search === '' ? <PagerComponent value={valuePager} page={page} setValue={setValuePager} setPage={setPage} totalPages={totalPages} localStorageName={LOCALSTORAGE_NAME_FILMS} /> : null}
+
     </div>
   )
 }

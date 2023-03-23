@@ -1,8 +1,9 @@
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
+import { MdFirstPage, MdLastPage } from 'react-icons/md'
 import { toast } from 'react-toastify'
 
 export function PagerComponent (props) {
-  const { value, page, setValue, setPage, totalPages } = props
+  const { value, page, setValue, setPage, totalPages, localStorageName } = props
 
   const nextPage = () => {
     if (page === totalPages + 1) {
@@ -11,6 +12,7 @@ export function PagerComponent (props) {
     } else {
       setPage(page + 1)
       setValue(page + 1)
+      localStorage.setItem(localStorageName, page + 1)
     }
   }
 
@@ -21,6 +23,7 @@ export function PagerComponent (props) {
     } else {
       setPage(page - 1)
       setValue(page - 1)
+      localStorage.setItem(localStorageName, page - 1)
     }
   }
 
@@ -34,6 +37,7 @@ export function PagerComponent (props) {
       setValue(page)
     } else {
       setPage(parseInt(value))
+      localStorage.setItem(localStorageName, parseInt(value))
     }
   }
 
@@ -44,14 +48,20 @@ export function PagerComponent (props) {
   return (
     <div>
         <div className='grid-3 pager mt-3'>
+            <button className='btnPager' type='button' onClick={() => { setPage(1); setValue(1); localStorage.setItem(localStorageName, 1) }} title='Primera pagina' disabled={page === 1}>
+              <MdFirstPage className='iconPager fontSize-xLarge'/>
+            </button>
             <button className='btnPager' type='button' onClick={previousPage} title='Pagina anterior' disabled={page === 1}>
-            <AiOutlineArrowLeft className='iconPager'/>
+              <AiOutlineArrowLeft className='iconPager fontSize-xLarge'/>
             </button>
             <form onSubmit={handleSubmit}>
-            <input className='inputPager' type='number' onChange={handleChange} value={value} placeholder={page}/>
+              <input className='inputPager' type='number' onChange={handleChange} value={value} placeholder={page}/>
             </form>
             <button className='btnPager' type='button' onClick={nextPage} title='Siguiente pagina' disabled={page === totalPages}>
-            <AiOutlineArrowRight className='iconPager'/>
+              <AiOutlineArrowRight className='iconPager fontSize-xLarge'/>
+            </button>
+            <button className='btnPager' type='button' onClick={() => { setPage(totalPages); setValue(totalPages); localStorage.setItem(localStorageName, totalPages) }} title='Ultima pagina' disabled={page === totalPages}>
+              <MdLastPage className='iconPager fontSize-xLarge'/>
             </button>
         </div>
     </div>

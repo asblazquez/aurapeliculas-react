@@ -11,10 +11,11 @@ export function SearchBar (props) {
   }
 
   return (
-        <form className='search mt-3' onSubmit={handleSubmit}>
-            <input className='inputSearch pl-1'
-            onChange={handleChange}
-            placeholder={placeholder} />
-            <button className='buttonSearch' onClick={handleSubmit} type={'button'}> Buscar </button>
-        </form>)
+          <form className='search mt-3' onSubmit={handleSubmit}>
+              <input className='inputSearch pl-1'
+              onChange={handleChange}
+              placeholder={placeholder} />
+              <button className='buttonSearch' onClick={handleSubmit} type={'button'}> Buscar </button>
+          </form>
+  )
 }

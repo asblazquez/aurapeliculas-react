@@ -3,7 +3,7 @@
 // Traer algún dato con un endpoint
 // Mostrar varios datos
 
-import { API, LOCALSTORAGE_NAME_SERIES } from '../Constants'
+import { API, PLACEHOLDER_SERIES, LOCALSTORAGE_NAME_SERIES } from '../Constants'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { PagerComponent } from '../assets/Pager'
@@ -39,7 +39,7 @@ export function Series () {
 
   return (
     <div>
-        <SearchBar value={value} setSearch={setSearch} setValue={setValue}/>
+        <SearchBar value={value} setSearch={setSearch} setValue={setValue} placeholder={PLACEHOLDER_SERIES}/>
         <div className='cards'>
             {
               error !== ''

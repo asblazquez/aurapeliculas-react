@@ -9,7 +9,7 @@ export function CardComponent (props) {
   const navigate = useNavigate()
   const [overViewFormatted, setOverViewFormatted] = useState('')
 
-  const navigateToFilm = () => {
+  const navigateTo = () => {
     navigate(route + item.id)
   }
 
@@ -22,7 +22,7 @@ export function CardComponent (props) {
   }, [overview])
 
   return (
-        <div className='card sombreado cursor-pointer' onClick={navigateToFilm}>
+        <div className='card sombreado cursor-pointer' onClick={navigateTo}>
             <LazyLoadImage
                 alt={'poster'}
                 src={API.api_image_url + item.poster_path}

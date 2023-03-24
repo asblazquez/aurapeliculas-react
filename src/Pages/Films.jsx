@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { API, LOCALSTORAGE_NAME_FILMS, PLACEHOLDER_PELICULAS } from '../Constants'
+import { API, LOCALSTORAGE_NAME_FILMS, NAVIGATE, PLACEHOLDER_PELICULAS } from '../Constants'
 import { apiRequest } from '../Utils'
 import { ErrorPage } from './Error'
 import { PagerComponent } from '../assets/Pager'
@@ -40,18 +40,17 @@ export function FilmsPage () {
                       : search === ''
                         ? movies.map((item, index) => {
                           return (
-                            <CardComponent item={item} overview={item.overview} rate={item.vote_average} key={index} />
+                            <CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.movie} key={index} />
                           )
                         })
                         : searchedMovie.map((item, index) => {
                           return (
-                            <CardComponent item={item} overview={item.overview} rate={item.vote_average} key={index} />
+                            <CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.movie} key={index} />
                           )
                         })
                 }
             </div>
             {search === '' ? <PagerComponent value={valuePager} page={page} setValue={setValuePager} setPage={setPage} totalPages={totalPages} localStorageName={LOCALSTORAGE_NAME_FILMS} /> : null}
-
     </div>
   )
 }

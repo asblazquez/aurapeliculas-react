@@ -47,7 +47,7 @@ export function PagerComponent (props) {
 
   return (
     <div>
-        <div className='grid-3 pager mt-3'>
+        <div className='grid-5 pager mt-3'>
             <button className='btnPager' type='button' onClick={() => { setPage(1); setValue(1); localStorage.setItem(localStorageName, 1) }} title='Primera pagina' disabled={page === 1}>
               <MdFirstPage className='iconPager fontSize-xLarge'/>
             </button>

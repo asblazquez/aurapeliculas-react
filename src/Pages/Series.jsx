@@ -3,7 +3,7 @@
 // Traer algún dato con un endpoint
 // Mostrar varios datos
 
-import { API, PLACEHOLDER_SERIES, LOCALSTORAGE_NAME_SERIES } from '../Constants'
+import { API, PLACEHOLDER_SERIES, LOCALSTORAGE_NAME_SERIES, NAVIGATE } from '../Constants'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { PagerComponent } from '../assets/Pager'
@@ -47,14 +47,14 @@ export function Series () {
                 : search === ''
                   ? serie.map((item, index) => {
                     if (item.poster_path !== null) {
-                      return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} key={index} />)
+                      return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.serie} key={index} />)
                     } else {
                       return (null)
                     }
                   })
                   : searchedSerie.map((item, index) => {
                     if (item.poster_path !== null) {
-                      return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} key={index} />)
+                      return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.serie} key={index} />)
                     } else {
                       return (null)
                     }

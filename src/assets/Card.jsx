@@ -5,24 +5,24 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export function CardComponent (props) {
-  const { item, overview, rate } = props
+  const { item, overview, rate, route } = props
   const navigate = useNavigate()
   const [overViewFormatted, setOverViewFormatted] = useState('')
 
   const navigateToFilm = () => {
-    navigate('/movie/' + item.id)
+    navigate(route + item.id)
   }
 
   useEffect(() => {
     const getoverviewFormatted = () => {
-      setOverViewFormatted(overview.slice(0, 45) + '...')
+      setOverViewFormatted(overview.slice(0, 150) + '...')
     }
 
     getoverviewFormatted()
   }, [overview])
 
   return (
-        <div className='card cursor-pointer' onClick={navigateToFilm}>
+        <div className='card sombreado cursor-pointer' onClick={navigateToFilm}>
             <LazyLoadImage
                 alt={'poster'}
                 src={API.api_image_url + item.poster_path}

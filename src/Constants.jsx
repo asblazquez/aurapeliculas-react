@@ -2,7 +2,8 @@
 export const API = {
   api_key: '3ad3c5861f62921ba8cb86c9f5e85044',
   api_url: 'https://api.themoviedb.org/3/',
-  api_image_url: 'https://image.tmdb.org/t/p/original/'
+  api_image_url: 'https://image.tmdb.org/t/p/original/',
+  youtube_render_video: 'https://www.youtube-nocookie.com/embed/'
 }
 
 export const ALERT_STYLES = {
@@ -15,6 +16,11 @@ export const ALERT_STYLES = {
   progress: undefined,
   theme: 'colored',
   limit: 3
+}
+
+export const NAVIGATE = {
+  movie: '/movie/',
+  serie: '/serie/'
 }
 
 export const PLACEHOLDER_PELICULAS = 'Transformers, Avatar, Mision Imposible...'

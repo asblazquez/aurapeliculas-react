@@ -45,7 +45,7 @@ export function FilmInfoPage () {
                           {film.title}
                         </div>
                         <div className='w-maxContent voteAverage'>
-                        <span><AiFillStar className={'alignIcon-bottom'} /> {film.vote_average + '(' + film.vote_count + ')'}</span>
+                        <span><AiFillStar className={'alignIcon-bottom'} /> {film.vote_average !== undefined ? (film.vote_average.toFixed(1)) : null}</span>
                         </div>
                       </div>
                       <div className='overView sombreado'>

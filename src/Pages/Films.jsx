@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { API, LOCALSTORAGE_NAME_FILMS, NAVIGATE, PLACEHOLDER_PELICULAS } from '../Constants'
+import { API, LOCALSTORAGE_NAME_FILMS, LOCALSTORAGE_VIEWMAX, NAVIGATE, PLACEHOLDER_PELICULAS } from '../Constants'
 import { apiRequest } from '../Utils'
 import { ErrorPage } from './Error'
 import { PagerComponent } from '../assets/Pager'
 import { CardComponent } from '../assets/Card'
 import { SearchBar } from '../assets/SearchBar'
+import { GiExpand, GiContract } from 'react-icons/gi'
 
 export function FilmsPage () {
   const [movies, setMovies] = useState([])
@@ -15,12 +16,11 @@ export function FilmsPage () {
   const [valueSearch, setValueSearch] = useState('')
   const [searchedMovie, setSearchedMovie] = useState([])
   const [search, setSearch] = useState('')
-  const [viewMax, setViewMax] = useState(true)
-  const [textViewButton, setTextViewButton] = useState('Minimizar Imagnes')
+  const [viewMax, setViewMax] = useState(localStorage.getItem(LOCALSTORAGE_VIEWMAX) === 'true')
 
   const changeView = () => {
     setViewMax(!viewMax)
-    viewMax ? setTextViewButton('Ampliar Imagnes') : setTextViewButton('Minimizar Imagnes')
+    localStorage.setItem(LOCALSTORAGE_VIEWMAX, !viewMax)
   }
 
   useEffect(() => {
@@ -39,7 +39,9 @@ export function FilmsPage () {
   }, [search])
   return (
     <div>
-        <button onClick={changeView}>{textViewButton}</button>
+      <div style={{ position: 'fixed' }}>
+        <button className='btnExpand cursor-pointer' type='button' onClick={changeView}>{viewMax ? <GiContract className='iconPager fontSize-xLarge' /> : <GiExpand className='iconPager fontSize-xLarge' /> }</button>
+      </div>
         <SearchBar value={valueSearch} setSearch={setSearch} setValue={setValueSearch} placeholder={PLACEHOLDER_PELICULAS}/>
         <div className='cards mt-3'>
                 {
@@ -47,14 +49,19 @@ export function FilmsPage () {
                       ? <ErrorPage text={error}/>
                       : search === ''
                         ? movies.map((item, index) => {
-                          return (
-                            <CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.movie} key={index} viewMax={viewMax}/>
-                          )
-                        })
+                          if (item.poster_path !== null) {
+                            return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.movie} key={index} viewMax={viewMax}/>)
+                          } else {
+                            return (null)
+                          }
+                        }
+                        )
                         : searchedMovie.map((item, index) => {
-                          return (
-                            <CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.movie} key={index} />
-                          )
+                          if (item.poster_path !== null) {
+                            return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.movie} key={index} viewMax={viewMax}/>)
+                          } else {
+                            return (null)
+                          }
                         })
                 }
             </div>

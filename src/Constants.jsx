@@ -30,3 +30,5 @@ export const PLACEHOLDER_SERIES = 'House, Vikingos, Brooklyn 99, The last of us.
 export const LOCALSTORAGE_NAME_FILMS = 'pageFilms'
 
 export const LOCALSTORAGE_NAME_SERIES = 'pageSeries'
+
+export const LOCALSTORAGE_VIEWMAX = 'viewMax'

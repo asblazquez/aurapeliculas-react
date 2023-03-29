@@ -3,7 +3,7 @@
 // Traer algún dato con un endpoint
 // Mostrar varios datos
 
-import { API, PLACEHOLDER_SERIES, LOCALSTORAGE_NAME_SERIES, NAVIGATE } from '../Constants'
+import { API, PLACEHOLDER_SERIES, LOCALSTORAGE_NAME_SERIES, NAVIGATE, LOCALSTORAGE_VIEWMAX } from '../Constants'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { PagerComponent } from '../assets/Pager'
@@ -11,6 +11,7 @@ import { CardComponent } from '../assets/Card'
 import { apiRequest } from '../Utils'
 import { ErrorPage } from './Error'
 import { SearchBar } from '../assets/SearchBar'
+import { GiExpand, GiContract } from 'react-icons/gi'
 
 export function Series () {
   const [value, setValue] = useState(localStorage.getItem(LOCALSTORAGE_NAME_SERIES) === null ? 1 : parseInt(localStorage.getItem(LOCALSTORAGE_NAME_SERIES)))
@@ -20,6 +21,12 @@ export function Series () {
   const [serie, setSerie] = useState([])
   const [searchedSerie, setSearchedSerie] = useState([])
   const [search, setSearch] = useState('')
+  const [viewMax, setViewMax] = useState(localStorage.getItem(LOCALSTORAGE_VIEWMAX) === 'true')
+
+  const changeView = () => {
+    setViewMax(!viewMax)
+    localStorage.setItem(LOCALSTORAGE_VIEWMAX, !viewMax)
+  }
 
   // Efecto para recuperar los datos de la API
   useEffect(() => {
@@ -39,6 +46,9 @@ export function Series () {
 
   return (
     <div>
+      <div style={{ position: 'fixed' }}>
+        <button className='btnExpand cursor-pointer' type='button' onClick={changeView}>{viewMax ? <GiContract className='iconPager fontSize-xLarge' /> : <GiExpand className='iconPager fontSize-xLarge' /> }</button>
+      </div>
         <SearchBar value={value} setSearch={setSearch} setValue={setValue} placeholder={PLACEHOLDER_SERIES}/>
         <div className='cards'>
             {
@@ -47,14 +57,14 @@ export function Series () {
                 : search === ''
                   ? serie.map((item, index) => {
                     if (item.poster_path !== null) {
-                      return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.serie} key={index} />)
+                      return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.serie} key={index} viewMax={viewMax} />)
                     } else {
                       return (null)
                     }
                   })
                   : searchedSerie.map((item, index) => {
                     if (item.poster_path !== null) {
-                      return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.serie} key={index} />)
+                      return (<CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.serie} key={index} viewMax={viewMax} />)
                     } else {
                       return (null)
                     }

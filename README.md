@@ -11,9 +11,9 @@ API:
 
 ___________________________________________________
 - Añadir la página de Home                [ ❌, null ]      
-- Añadir la página de peliculas           [ ❌, 🍊 ]
-- Añadir la página de Series              [ ❌, 🌮 ]
-- Añadir input con búsqueda               [ ❌, null ]     
+- Añadir la página de peliculas           [ ✔️, 🍊 ]
+- Añadir la página de Series              [ ✔️, 🌮 ]
+- Añadir input con búsqueda               [ ✔️, 🍊 ]     
 - Buscar diseño general de la App         [ ❌, null ]
 - Añadir estilos básicos                  [ ❌, null ]
 - Crear estructura de carpetas            [ ❌, null ]

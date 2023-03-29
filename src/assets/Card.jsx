@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export function CardComponent (props) {
-  const { item, overview, rate, route } = props
+  const { item, overview, rate, route, viewMax } = props
   const navigate = useNavigate()
   const [overViewFormatted, setOverViewFormatted] = useState('')
 
@@ -22,7 +22,7 @@ export function CardComponent (props) {
   }, [overview])
 
   return (
-        <div className='card sombreado cursor-pointer' onClick={navigateTo}>
+        <div className={viewMax ? 'card sombreado cursor-pointer w-20' : 'card sombreado cursor-pointer w-10'} onClick={navigateTo}>
             <LazyLoadImage
                 alt={'poster'}
                 src={API.api_image_url + item.poster_path}
@@ -32,7 +32,7 @@ export function CardComponent (props) {
                 loading={'lazy'}
                 className={'cardImg'}
             />
-            <div className='cardInfo'>
+            <div className={viewMax ? 'cardInfo fontSize-meduim' : 'cardInfo fontSize-small-custom'}>
                 <div className={'voteAverage'}>
                     <span><AiFillStar className={'alignIcon-bottom'} /> {rate}</span>
                 </div>

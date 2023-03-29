@@ -46,7 +46,7 @@ export function FilmInfoPage () {
                         : <div>
                           <h3>No hay trailer disponible</h3>
                       </div>}
-                        <a href={'https://cuevana3.mu/pelicula/' + formatTitlte} target={'_blank'} hidden={true}>Ver Online</a>
+                        <a href={'https://cuevana3.mu/pelicula/' + formatTitlte} target={'_blank'} hidden={false}>Ver Online</a>
                     </div>
             }
         </div>

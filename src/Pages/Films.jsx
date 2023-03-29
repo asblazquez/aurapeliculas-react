@@ -15,6 +15,13 @@ export function FilmsPage () {
   const [valueSearch, setValueSearch] = useState('')
   const [searchedMovie, setSearchedMovie] = useState([])
   const [search, setSearch] = useState('')
+  const [viewMax, setViewMax] = useState(true)
+  const [textViewButton, setTextViewButton] = useState('Minimizar Imagnes')
+
+  const changeView = () => {
+    setViewMax(!viewMax)
+    viewMax ? setTextViewButton('Ampliar Imagnes') : setTextViewButton('Minimizar Imagnes')
+  }
 
   useEffect(() => {
     const getFilms = async () => {
@@ -32,6 +39,7 @@ export function FilmsPage () {
   }, [search])
   return (
     <div>
+        <button onClick={changeView}>{textViewButton}</button>
         <SearchBar value={valueSearch} setSearch={setSearch} setValue={setValueSearch} placeholder={PLACEHOLDER_PELICULAS}/>
         <div className='cards mt-3'>
                 {
@@ -40,7 +48,7 @@ export function FilmsPage () {
                       : search === ''
                         ? movies.map((item, index) => {
                           return (
-                            <CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.movie} key={index} />
+                            <CardComponent item={item} overview={item.overview} rate={item.vote_average} route={NAVIGATE.movie} key={index} viewMax={viewMax}/>
                           )
                         })
                         : searchedMovie.map((item, index) => {
@@ -50,7 +58,7 @@ export function FilmsPage () {
                         })
                 }
             </div>
-            {search === '' ? <PagerComponent value={valuePager} page={page} setValue={setValuePager} setPage={setPage} totalPages={totalPages} localStorageName={LOCALSTORAGE_NAME_FILMS} /> : null}
+            {(search === '' && error === '') ? <PagerComponent value={valuePager} page={page} setValue={setValuePager} setPage={setPage} totalPages={totalPages} localStorageName={LOCALSTORAGE_NAME_FILMS} /> : null}
     </div>
   )
 }

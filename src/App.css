@@ -1,5 +1,6 @@
 :root {
     --main-bg-color: #333333;
+    --secondary-bg-color: #4d4d4d;
     --main-bg-color-opacity-7: rgba(51, 51, 51, .7);
     --selected-text-color: rgb(0, 255, 225);
     --color-first: #482B55;
@@ -523,10 +524,26 @@ body {
 
 .trailerVideo {
     aspect-ratio: 16 / 9;
-    width: 70rem;
+    width: 70vmax;
     border-radius: 5px;
     border: none;
     margin: 2rem;
+}
+
+.trailerPlaceHolder {
+    aspect-ratio: 16 / 4;
+    width: 70vmax;
+    border-radius: 5px;
+    border: none;
+    margin: 2rem;
+    background-color: var(--secondary-bg-color);
+}
+
+.textTrailerError {
+    padding-top: 7rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: xx-large;
 }
 
 .centerVideo {
@@ -580,19 +597,110 @@ html::-webkit-scrollbar-thumb:hover {
     border: 1px solid var(--color-first);
     position: absolute;
     left: 92rem;
-    top: 39rem;
+    top: 40rem;
+}
+
+@media (min-width: 300px) {
+    .btnExpand {
+        left: 16rem;
+        top: 40rem;
+    }
 }
 
 @media (min-width: 400px) {
     .btnExpand {
-        left: 47rem;
-        top: 22rem;
+        left: 22rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 500px) {
+    .btnExpand {
+        left: 28rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 600px) {
+    .btnExpand {
+        left: 34rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 700px) {
+    .btnExpand {
+        left: 40rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 800px) {
+    .btnExpand {
+        left: 46rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 900px) {
+    .btnExpand {
+        left: 52rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 1000px) {
+    .btnExpand {
+        left: 58rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 1100px) {
+    .btnExpand {
+        left: 64rem;
+        top: 40rem;
     }
 }
 
 @media (min-width: 1200px) {
     .btnExpand {
-        left: 92rem;
-        top: 39rem;
+        left: 70rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 1300px) {
+    .btnExpand {
+        left: 76rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .btnExpand {
+        left: 82rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 1500px) {
+    .btnExpand {
+        left: 88rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    .btnExpand {
+        left: 94rem;
+        top: 40rem;
+    }
+}
+
+@media (min-width: 1700px) {
+    .btnExpand {
+        left: 100rem;
+        top: 40rem;
     }
 }

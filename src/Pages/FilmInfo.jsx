@@ -43,10 +43,8 @@ export function FilmInfoPage () {
                       <OverViewComponent text={film.overview} />
                       {videos.length > 0
                         ? <TrailerComponent videos={videos} />
-                        : <div>
-                          <h3>No hay trailer disponible</h3>
-                      </div>}
-                        <a href={'https://cuevana3.mu/pelicula/' + formatTitlte} target={'_blank'} hidden={false}>Ver Online</a>
+                        : <TrailerComponent videos={null} />}
+                        {/* <a href={'https://cuevana3.mu/pelicula/' + formatTitlte} target={'_blank'} hidden={false}>Ver Online</a> */}
                     </div>
             }
         </div>

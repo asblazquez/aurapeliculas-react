@@ -37,6 +37,7 @@ export function FilmsPage () {
     }
     if (search !== '') getSearch()
   }, [search])
+
   return (
     <div>
       <div style={{ position: 'fixed' }}>

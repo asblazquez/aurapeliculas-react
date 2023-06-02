@@ -11,7 +11,6 @@ export function FilmInfoPage () {
   const { id } = useParams()
   const [film, setFilm] = useState([])
   const [error, setError] = useState('')
-  const [formatTitlte, setformatTitle] = useState('')
   const [videos, setVideos] = useState([])
 
   useEffect(() => {
@@ -26,13 +25,7 @@ export function FilmInfoPage () {
     getFilmData()
     getVideos()
   }, [])
-
-  useEffect(() => {
-    const getFormattittle = () => {
-      if (film.title !== undefined) { setformatTitle(film.original_title.replaceAll(' ', '-')) }
-    }
-    getFormattittle()
-  }, [film])
+  console.table(film)
   return (
         <div>
             {
@@ -40,11 +33,8 @@ export function FilmInfoPage () {
                   ? <ErrorPage text={error}/>
                   : <div>
                       <HeaderComponent title={film.title} img={film.backdrop_path} voteAverage={film.vote_average} />
-                      <OverViewComponent text={film.overview} />
-                      {videos.length > 0
-                        ? <TrailerComponent videos={videos} />
-                        : <TrailerComponent videos={null} />}
-                        {/* <a href={'https://cuevana3.mu/pelicula/' + formatTitlte} target={'_blank'} hidden={false}>Ver Online</a> */}
+                      <OverViewComponent text={film.overview} date={film.release_date} generos={film.genres} producers={film.production_companies}/>
+                      <TrailerComponent videos={videos.length > 0 ? videos : null} />
                     </div>
             }
         </div>

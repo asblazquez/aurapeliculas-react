@@ -10,6 +10,7 @@
     --color-fifth: #9A09DD;
     --color-sixth: #9A09DD;
     --color-gold: #FFD700;
+    --color-blue: #00a698;
 }
 
 /***************************************************************************************************/
@@ -549,6 +550,27 @@ body {
 .centerVideo {
     width: fit-content;
     margin: auto;
+}
+
+.space-nowrap {
+    white-space: nowrap;
+}
+
+.textGeneros {
+    display: inline-block;
+    margin-right: 1rem;
+    padding: 0.75rem;
+    border-radius: 30px;
+    background-color: var(--color-blue);
+    border: 2px;
+    border-color: black;
+    color: white;
+}
+
+.imgProducers {
+    width: 5rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
 }
 
 /***************************************************************************************************/
